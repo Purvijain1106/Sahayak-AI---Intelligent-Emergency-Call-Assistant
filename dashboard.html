@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sahayak AI – Emergency Helpline 1092</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#f0f4f8;
+  --bg2:#ffffff;
+  --bg3:#e8edf3;
+  --sidebar:#1a2540;
+  --sidebar2:#0f1829;
+  --border:#dde4ed;
+  --border2:#c9d4e0;
+  --text:#1e293b;
+  --text-mid:#64748b;
+  --text-dim:#94a3b8;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --indigo:#6366f1;
+  --red:#ef4444;
+  --red-light:#fef2f2;
+  --amber:#f59e0b;
+  --amber-light:#fffbeb;
+  --green:#16a34a;
+  --green-light:#f0fdf4;
+  --purple:#7c3aed;
+  --font:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --radius:12px;
+  --shadow:0 1px 3px rgba(0,0,0,0.07),0 4px 16px rgba(0,0,0,0.05);
+  --shadow-lg:0 4px 24px rgba(0,0,0,0.10);
+}
+
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow:hidden;-webkit-font-smoothing:antialiased;font-size:14px}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#d1d9e5;border-radius:99px}
+
+/* ─── SIDEBAR ─── */
+.sidebar{
+  width:240px;min-height:100vh;flex-shrink:0;
+  background:linear-gradient(180deg,#1a2540 0%,#0f1829 100%);
+  display:flex;flex-direction:column;
+  box-shadow:4px 0 24px rgba(0,0,0,0.18);
+  position:relative;z-index:10;
+}
+.logo{
+  height:64px;display:flex;align-items:center;gap:10px;
+  padding:0 18px;border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.logo-icon{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,#3b82f6,#6366f1);
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  position:relative;box-shadow:0 4px 12px rgba(59,130,246,0.4);
+}
+.logo-dot{
+  position:absolute;top:-3px;right:-3px;width:10px;height:10px;
+  background:#22c55e;border-radius:50%;border:2px solid #0f1829;
+  animation:blink 1.4s ease-in-out infinite;
+}
+.logo-text .name{font-weight:800;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#fff}
+.logo-text .sub{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:1px}
+
+.sys-pill{
+  margin:12px;padding:7px 12px;border-radius:8px;
+  background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);
+  display:flex;align-items:center;gap:7px;
+  font-size:11px;font-weight:600;color:#4ade80;letter-spacing:0.07em;text-transform:uppercase;
+}
+.sys-pill .pulse{width:6px;height:6px;background:#4ade80;border-radius:50%;margin-left:auto;animation:blink 1.4s ease-in-out infinite}
+
+nav{padding:8px;flex:1}
+.nav-item{
+  display:flex;align-items:center;gap:11px;
+  padding:10px 12px;border-radius:9px;
+  font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.5);
+  cursor:pointer;transition:all .18s;margin-bottom:3px;position:relative;
+  border:1px solid transparent;user-select:none;
+}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.85)}
+.nav-item.active{
+  background:linear-gradient(90deg,rgba(59,130,246,0.25),rgba(59,130,246,0.07));
+  border-color:rgba(59,130,246,0.25);color:#fff;
+}
+.nav-item.active::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:3px;height:22px;background:#60a5fa;border-radius:0 3px 3px 0;
+}
+.nav-icon{font-size:15px;width:19px;text-align:center}
+.nav-item.active .nav-icon{color:#60a5fa}
+.nav-badge{
+  margin-left:auto;background:rgba(239,68,68,0.8);color:#fff;
+  font-size:10px;font-weight:700;border-radius:99px;padding:1px 7px;
+}
+
+.new-call-btn{
+  margin:12px;padding:12px;border-radius:10px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;
+  font-size:12.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 18px rgba(239,68,68,0.4);transition:transform .15s,box-shadow .15s;
+  font-family:var(--font);
+}
+.new-call-btn:hover{transform:scale(1.02);box-shadow:0 6px 22px rgba(239,68,68,0.5)}
+.new-call-btn:active{transform:scale(0.99)}
+
+.sidebar-foot{padding:12px 18px 14px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.07em;text-transform:uppercase}
+
+/* ─── MAIN ─── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{
+  height:64px;border-bottom:1px solid var(--border);background:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.05);
+}
+.topbar-left{display:flex;align-items:center;gap:8px;color:var(--text-mid);font-size:13px}
+.topbar-left strong{font-family:var(--mono);color:var(--blue);font-weight:600}
+.topbar-right{font-family:var(--mono);font-size:12px;color:var(--text-mid);background:var(--blue-light);border:1px solid #bfdbfe;padding:5px 11px;border-radius:7px}
+
+.content{flex:1;overflow-y:auto;padding:28px 30px}
+
+/* ─── PAGES ─── */
+.page{display:none}
+.page.active{display:block}
+
+/* ─── SECTION HEADER ─── */
+.page-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.page-tag{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:3px}
+.page-tag .dot{width:5px;height:5px;background:var(--blue);border-radius:50%;animation:blink 1.4s ease-in-out infinite}
+.page-title{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.02em}
+.page-sub{font-size:13px;color:var(--text-dim);margin-top:3px}
+
+.live-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;
+  border-radius:7px;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--red-light);border:1px solid #fecaca;color:#dc2626;
+}
+.live-badge .dot{width:6px;height:6px;background:#ef4444;border-radius:50%;animation:blink 1.4s ease-in-out infinite}
+
+/* ─── STAT CARDS ─── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat-card{
+  background:#fff;border-radius:var(--radius);padding:20px;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+  cursor:pointer;transition:transform .15s,box-shadow .15s;
+  position:relative;overflow:hidden;
+}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.stat-card .stripe{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius) var(--radius) 0 0}
+.stat-card .lbl{font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.stat-card .val{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat-card .foot{font-size:11px;color:var(--text-dim);margin-top:8px;display:flex;align-items:center;gap:5px}
+
+/* ─── CHARTS ROW ─── */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.chart-card{background:#fff;border-radius:var(--radius);padding:20px 22px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.chart-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.chart-sub{font-size:11px;color:var(--text-dim);margin-bottom:18px}
+.bar-row{display:flex;align-items:flex-end;gap:10px;height:140px;padding-bottom:22px}
+.bar-col{display:flex;flex-direction:column;align-items:center;flex:1;gap:5px;height:100%;justify-content:flex-end}
+.bar{width:100%;border-radius:6px 6px 0 0;min-height:6px;transition:opacity .2s;cursor:pointer}
+.bar:hover{opacity:0.75}
+.bar-lbl{font-size:10.5px;font-family:var(--mono);color:var(--text-dim)}
+.spark-card{background:#fff;border-radius:var(--radius);padding:20px 22px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:20px}
+.spark-svg{width:100%;height:160px;overflow:visible;display:block}
+
+/* ─── CALL ROWS ─── */
+.call-row{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 18px;margin-bottom:9px;cursor:pointer;
+  transition:all .15s;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.call-row:hover{transform:translateX(3px);border-color:#93c5fd;box-shadow:0 4px 20px rgba(37,99,235,0.1)}
+.call-row .accent{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:var(--radius) 0 0 var(--radius)}
+.call-body{flex:1;padding-left:8px;min-width:0}
+.call-num{font-family:var(--mono);font-size:14.5px;font-weight:700;color:var(--text)}
+.call-meta{font-size:11px;color:var(--text-dim);margin-top:3px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.sep{color:var(--border2)}
+.call-badges{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.arrow{color:var(--text-dim);font-size:18px;transition:transform .15s}
+.call-row:hover .arrow{transform:translateX(3px);color:var(--blue)}
+
+/* ─── BADGES ─── */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.b-active{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.b-closed{background:#f8fafc;color:#64748b;border:1px solid #e2e8f0}
+.b-high{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.b-medium{background:#fffbeb;color:#b45309;border:1px solid #fde68a}
+.b-low{background:var(--blue-light);color:#1d4ed8;border:1px solid #bfdbfe}
+.b-panic{background:#fdf2f8;color:#9d174d;border:1px solid #fbcfe8}
+.b-stress{background:#fffbeb;color:#b45309;border:1px solid #fde68a}
+.b-neutral{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe}
+.b-calm{background:var(--green-light);color:#15803d;border:1px solid #bbf7d0}
+
+/* ─── CALL DETAIL ─── */
+.detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.back-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;background:#fff;border:1px solid var(--border);cursor:pointer;font-size:13px;font-weight:600;color:var(--text-mid);transition:all .15s;box-shadow:var(--shadow)}
+.back-btn:hover{color:var(--blue);border-color:#93c5fd}
+.detail-actions{display:flex;gap:10px}
+.btn-analyze,.btn-close-call{padding:9px 18px;border-radius:9px;border:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:0.04em;font-family:var(--font);transition:all .15s}
+.btn-analyze{background:var(--blue-light);color:var(--blue);border:1px solid #93c5fd}
+.btn-analyze:hover{background:#dbeafe}
+.btn-close-call{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 3px 12px rgba(239,68,68,0.3)}
+.btn-close-call:hover{transform:scale(1.02);box-shadow:0 4px 16px rgba(239,68,68,0.45)}
+
+.detail-grid{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:start}
+@media(max-width:900px){.detail-grid{grid-template-columns:1fr}}
+
+.transcript-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;height:560px}
+.tc-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:#fafbfd}
+.tc-title{font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-mid);display:flex;align-items:center;gap:6px}
+.tc-live{width:7px;height:7px;background:#ef4444;border-radius:50%;animation:blink 1.4s ease-in-out infinite}
+.lang-tag{padding:3px 10px;border-radius:6px;background:var(--blue-light);color:var(--blue);font-size:10.5px;font-weight:700;border:1px solid #bfdbfe}
+.tc-controls{margin-left:auto;display:flex;gap:6px;align-items:center}
+.tc-seg-count{font-size:11px;font-family:var(--mono);color:var(--text-dim)}
+.tl-btn{padding:5px 11px;border-radius:7px;border:1px solid var(--border);background:#fff;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;font-family:var(--font);color:var(--text-mid)}
+.tl-btn:hover,.tl-btn.on{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.tc-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+
+.msg{display:flex;flex-direction:column}
+.msg.op{align-items:flex-end}
+.msg-top{display:flex;align-items:center;gap:6px;margin-bottom:4px;padding:0 2px}
+.msg-spk{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em}
+.msg.caller .msg-spk{color:var(--text-dim)}
+.msg.op .msg-spk{color:#1d4ed8}
+.msg-time{font-size:10px;font-family:var(--mono);color:var(--text-dim)}
+.bubble{max-width:82%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.6}
+.msg.caller .bubble{background:#f1f5f9;color:var(--text);border-radius:4px 14px 14px 14px;border:1px solid #e2e8f0}
+.msg.op .bubble{background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;border-radius:14px 4px 14px 14px}
+.msg.sys .bubble{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;font-size:12px;align-self:center;max-width:90%}
+.translation{margin-top:6px;padding:6px 10px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:8px;font-size:11.5px;font-style:italic;color:#3730a3;display:flex;gap:5px;align-items:flex-start;line-height:1.5}
+.msg.op .bubble .translation{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.3);color:#e0e7ff}
+
+.info-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px;margin-bottom:14px}
+.info-title{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-item .ik{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-dim);margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.info-item .iv{font-size:13px;font-weight:600;color:var(--text)}
+
+.analysis-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px}
+.ai-row{display:flex;gap:10px;margin-bottom:14px}
+.ai-box{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:12px;text-align:center}
+.ai-box .ak{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-dim);margin-bottom:6px}
+.ai-box .av{font-size:15px;font-weight:800}
+.threat-bar{background:var(--bg3);border-radius:99px;height:6px;overflow:hidden;margin:8px 0 4px}
+.threat-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#16a34a,#f59e0b,#ef4444);transition:width .4s}
+.threat-labels{display:flex;justify-content:space-between;font-size:10px;font-family:var(--mono);color:var(--text-dim)}
+
+.actions-list{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.action-item{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;font-size:12px;color:#1e40af;cursor:pointer;transition:all .15s}
+.action-item:hover{background:#dbeafe;transform:translateX(2px)}
+.action-item::before{content:'→';font-weight:800;color:var(--blue);flex-shrink:0;margin-top:1px}
+
+/* ─── NEW CALL PAGE ─── */
+.nc-wrap{max-width:480px;margin:40px auto}
+.nc-card{background:#fff;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow-lg);padding:36px 36px 32px}
+.nc-icon{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#ef4444,#dc2626);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 20px;box-shadow:0 6px 20px rgba(239,68,68,0.35)}
+.nc-title{text-align:center;font-size:22px;font-weight:800;color:var(--text);margin-bottom:5px}
+.nc-sub{text-align:center;font-size:13px;color:var(--text-dim);margin-bottom:28px}
+.channel-tag{display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:28px;font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text-mid)}
+.channel-tag span{background:var(--bg3);border:1px solid var(--border);padding:4px 12px;border-radius:99px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:7px}
+.form-input,.form-select{
+  width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid var(--border);
+  background:#fff;font-size:14px;font-family:var(--font);color:var(--text);
+  transition:border-color .15s,box-shadow .15s;outline:none;
+}
+.form-input:focus,.form-select:focus{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.start-btn{
+  width:100%;padding:14px;border-radius:10px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;
+  font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  font-family:var(--font);box-shadow:0 4px 18px rgba(239,68,68,0.4);
+  transition:transform .15s,box-shadow .15s;margin-top:10px;
+}
+.start-btn:hover{transform:scale(1.015);box-shadow:0 6px 22px rgba(239,68,68,0.5)}
+.nc-foot{text-align:center;font-size:11px;color:var(--text-dim);margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* ─── CALL LOGS PAGE ─── */
+.logs-filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.filter-btn{padding:7px 16px;border-radius:8px;border:1.5px solid var(--border);background:#fff;color:var(--text-mid);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--font)}
+.filter-btn:hover,.filter-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.log-table{background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.log-thead{display:grid;grid-template-columns:1.5fr .85fr 1fr .75fr .7fr .7fr .65fr;padding:10px 18px;background:var(--bg);border-bottom:1px solid var(--border);gap:8px}
+.log-th{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim)}
+.log-row{display:grid;grid-template-columns:1.5fr .85fr 1fr .75fr .7fr .7fr .65fr;padding:13px 18px;border-bottom:1px solid var(--border);gap:8px;align-items:center;cursor:pointer;transition:background .12s}
+.log-row:last-child{border-bottom:none}
+.log-row:hover{background:#f8faff}
+.log-cell{font-size:12.5px;color:var(--text)}
+.log-cell.mono{font-family:var(--mono);font-size:12px}
+.log-cell.dim{color:var(--text-dim)}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:#1e293b;color:#fff;border-radius:10px;padding:12px 20px;
+  font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.25);
+  transform:translateY(80px);opacity:0;transition:all .25s;z-index:9999;
+  display:flex;align-items:center;gap:10px;max-width:340px;
+}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ─── MODAL ─── */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,24,41,0.55);display:flex;align-items:center;justify-content:center;z-index:9000;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:16px;padding:28px 28px 24px;max-width:380px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.2);transform:scale(0.95);transition:transform .2s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:10px}
+.modal-body{font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:22px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+.modal-cancel{padding:9px 18px;border-radius:8px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-mid);font-family:var(--font);transition:all .15s}
+.modal-cancel:hover{border-color:var(--text-dim)}
+.modal-confirm{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);font-family:var(--font);box-shadow:0 3px 12px rgba(239,68,68,0.3);transition:all .15s}
+.modal-confirm:hover{transform:scale(1.02)}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">⚡<div class="logo-dot"></div></div>
+    <div class="logo-text">
+      <div class="name">Sahayak AI</div>
+      <div class="sub">Emergency Ops</div>
+    </div>
+  </div>
+  <div class="sys-pill">📡 System Online<span class="pulse"></span></div>
+  <nav>
+    <div class="nav-item active" onclick="goPage('dashboard',this)">
+      <span class="nav-icon">▦</span> Dashboard
+    </div>
+    <div class="nav-item" onclick="goPage('active-calls',this)">
+      <span class="nav-icon">📞</span> Active Calls <span class="nav-badge"></span>
+    </div>
+    <div class="nav-item" onclick="goPage('call-logs',this)">
+      <span class="nav-icon">📋</span> Call Logs
+    </div>
+  </nav>
+  <button class="new-call-btn" onclick="goPage('new-call'); setActiveNav(null)">📞 &nbsp;New Call</button>
+  <div class="sidebar-foot">🔒 1092 · Secure Channel</div>
+</aside>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      National Emergency Helpline <span style="color:#d1d9e5">·</span>
+      <strong>1092</strong>
+    </div>
+    <div class="topbar-right" id="dateEl"></div>
+  </div>
+  <div class="content">
+
+    <!-- ──────── PAGE: DASHBOARD ──────── -->
+    <div class="page active" id="pg-dashboard">
+      <div class="page-hd">
+        <div>
+          <div class="page-tag"><span class="dot"></span>📡 Live Monitoring</div>
+          <div class="page-title">System Overview</div>
+          <div class="page-sub">Real-time intelligence from emergency operators</div>
+        </div>
+        <div class="live-badge"><span class="dot"></span> LIVE</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card" onclick="toast('📊 Total calls since system launch','info')">
+          <div class="stripe" style="background:linear-gradient(90deg,#2563eb,#6366f1)"></div>
+          <div class="lbl">Total Calls <span>📞</span></div>
+          <div class="val" style="color:#1e40af"></div>
+          <div class="foot" style="color:#16a34a">↗ All time</div>
+        </div>
+        <div class="stat-card" onclick="goPage('active-calls'); setActiveNav('active-calls')">
+          <div class="stripe" style="background:#ef4444"></div>
+          <div class="lbl" style="color:#dc2626">Active Calls <span>⚡</span></div>
+          <div class="val" style="color:#dc2626"></div>
+          <div class="foot"><span style="display:inline-block;width:7px;height:7px;background:#ef4444;border-radius:50%;animation:blink 1.4s ease-in-out infinite"></span> <span style="color:#dc2626">In Progress → View</span></div>
+        </div>
+        <div class="stat-card" onclick="toast('⚠️ 1 high-priority call needs immediate attention','warn')">
+          <div class="stripe" style="background:#f59e0b"></div>
+          <div class="lbl" style="color:#b45309">High Priority <span>⚠</span></div>
+          <div class="val" style="color:#d97706"></div>
+          <div class="foot" style="color:#92400e">Critical alerts</div>
+        </div>
+        <div class="stat-card" onclick="toast('⏱️ Average operator response time across all calls','info')">
+          <div class="stripe" style="background:#16a34a"></div>
+          <div class="lbl" style="color:#15803d">Avg Response <span>✓</span></div>
+          <div class="val" style="color:#15803d"></div>
+          <div class="foot" style="color:#166534">Response time</div>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card">
+          <div class="chart-title">Priority Distribution</div>
+          <div class="chart-sub">Emergency calls by severity level</div>
+          <div class="bar-row" id="prioChart"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Caller Emotion States</div>
+          <div class="chart-sub">Detected distress levels across calls</div>
+          <div class="bar-row" id="emotChart"></div>
+        </div>
+      </div>
+
+      <div class="spark-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div>
+            <div class="chart-title">Call Volume Trend</div>
+            <div class="chart-sub" style="margin:0">Simulated last 12 periods</div>
+          </div>
+          <span style="font-size:11px;font-family:var(--mono);color:var(--blue);background:var(--blue-light);padding:4px 10px;border-radius:6px;border:1px solid #bfdbfe">● Live</span>
+        </div>
+        <svg class="spark-svg" id="sparkEl" viewBox="0 0 600 160" preserveAspectRatio="none"></svg>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:14px;font-weight:700;color:var(--text)">Recent Calls</div>
+          <button class="filter-btn on" onclick="goPage('call-logs'); setActiveNav('call-logs')">View All Logs →</button>
+        </div>
+        <div id="dash-call-list"></div>
+      </div>
+    </div>
+
+    <!-- ──────── PAGE: ACTIVE CALLS ──────── -->
+    <div class="page" id="pg-active-calls">
+      <div class="page-hd">
+        <div>
+          <div class="page-tag"><span class="dot"></span>⚡ In Progress</div>
+          <div class="page-title">Active Calls</div>
+          <div class="page-sub">Live emergency sessions requiring operator attention</div>
+        </div>
+        <div class="live-badge"><span class="dot"></span> ACTIVE</div>
+      </div>
+      <div id="active-call-list"></div>
+    </div>
+
+    <!-- ──────── PAGE: CALL DETAIL ──────── -->
+    <div class="page" id="pg-call-detail">
+      <div class="detail-header">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span id="det-num" style="font-family:var(--mono);font-weight:700;font-size:15px"></span>
+          <span id="det-status-badge"></span>
+        </div>
+        <div class="detail-actions">
+          <button class="btn-analyze" onclick="runAnalysis()">🤖 Analyze</button>
+          <button class="btn-close-call" id="closeCallBtn" onclick="confirmCloseCall()">✕ Close Call</button>
+        </div>
+      </div>
+      <div class="detail-grid">
+        <!-- Transcript -->
+        <div class="transcript-card">
+          <div class="tc-header">
+            <div class="tc-title"><span class="tc-live" id="tc-live-dot"></span> Live Transcript</div>
+            <span class="lang-tag" id="tc-lang"></span>
+            <div class="tc-controls">
+              <span class="tc-seg-count" id="tc-seg-count"></span>
+              <button class="tl-btn" id="btn-hindi" onclick="toggleTranslate('hindi')">हिंदी</button>
+              <button class="tl-btn" id="btn-en" onclick="toggleTranslate('english')">EN</button>
+            </div>
+          </div>
+          <div class="tc-body" id="tc-body"></div>
+        </div>
+        <!-- Info panel -->
+        <div>
+          <div class="info-card">
+            <div class="info-title">ℹ Call Info</div>
+            <div class="info-grid">
+              <div class="info-item"><div class="ik">👤 Operator</div><div class="iv" id="di-op"></div></div>
+              <div class="info-item"><div class="ik">🌐 Language</div><div class="iv" id="di-lang"></div></div>
+              <div class="info-item"><div class="ik">⏰ Start</div><div class="iv" id="di-start" style="font-family:var(--mono)"></div></div>
+              <div class="info-item"><div class="ik">📍 Location</div><div class="iv" id="di-loc"></div></div>
+            </div>
+          </div>
+          <div class="analysis-card">
+            <div class="info-title">🤖 AI Analysis <span id="ai-status" style="margin-left:auto;font-size:10px;font-family:var(--mono);font-weight:600;color:var(--green)">READY</span></div>
+            <div class="ai-row">
+              <div class="ai-box">
+                <div class="ak">Priority</div>
+                <div class="av" id="ai-priority"></div>
+              </div>
+              <div class="ai-box">
+                <div class="ak">Emotion</div>
+                <div class="av" id="ai-emotion"></div>
+              </div>
+            </div>
+            <div class="ak" style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px">Threat Level</div>
+            <div class="threat-bar"><div class="threat-fill" id="threat-fill" style="width:0%"></div></div>
+            <div class="threat-labels"><span>Low</span><span id="threat-pct"></span><span>High</span></div>
+            <div class="ak" style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 4px">Situation Brief</div>
+            <div id="ai-brief" style="font-size:12.5px;color:var(--text-mid);line-height:1.6">No summary available.</div>
+            <div class="ak" style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 8px">Suggested Actions</div>
+            <div class="actions-list" id="ai-actions"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ──────── PAGE: CALL LOGS ──────── -->
+    <div class="page" id="pg-call-logs">
+      <div class="page-hd">
+        <div>
+          <div class="page-tag">📋 Records</div>
+          <div class="page-title">Call Logs</div>
+          <div class="page-sub">Historical record of all emergency calls</div>
+        </div>
+      </div>
+      <div class="logs-filters">
+        <button class="filter-btn on" onclick="filterLogs('all',this)">All Calls</button>
+        <button class="filter-btn" onclick="filterLogs('active',this)">Active</button>
+        <button class="filter-btn" onclick="filterLogs('closed',this)">Closed</button>
+        <button class="filter-btn" onclick="filterLogs('high',this)">High Priority</button>
+      </div>
+      <div class="log-table">
+        <div class="log-thead">
+          <div class="log-th">Phone Number</div>
+          <div class="log-th">Date</div>
+          <div class="log-th">Operator</div>
+          <div class="log-th">Language</div>
+          <div class="log-th">Priority</div>
+          <div class="log-th">Status</div>
+          <div class="log-th">Start Time</div>
+        </div>
+        <div id="log-rows"></div>
+      </div>
+    </div>
+
+    <!-- ──────── PAGE: NEW CALL ──────── -->
+    <div class="page" id="pg-new-call">
+      <div class="nc-wrap">
+        <div class="nc-card">
+          <div class="nc-icon">📞</div>
+          <div class="nc-title">Initiate Emergency Call</div>
+          <div class="nc-sub">Open a new AI-assisted operator session</div>
+          <div class="channel-tag">📡 <span>Channel 1092</span> 🔴</div>
+          <div class="form-group">
+            <label class="form-label">Caller Number</label>
+            <input class="form-input" type="text" placeholder="+91 98765 43210" value="+91 98765 43210"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Operator ID</label>
+              <input class="form-input" type="text" placeholder="Op-1" value="Op-1"/>
+            </div>
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Language</label>
+              <select class="form-select">
+                <option>Hindi</option>
+                <option>English</option>
+                <option>Hinglish</option>
+                <option>Kannada</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <button class="start-btn" onclick="startCall()">📞 Start Emergency Session</button>
+          <div class="nc-foot">🔒 Encrypted · Government of India</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- TOAST -->
+<div class="toast" id="toastEl">
+  <span id="toastIcon">✓</span>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-confirm" id="modalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ─── DATA ─── */
+
+let CALLS = [
+  {
+    id: 1,
+    number: "+91 9876543210",
+    operator: "AI Operator",
+    lang: "Hindi",
+    start: "10:32 AM",
+    date: "08 Aug 2025",
+    status: "active",
+    priority: "high",
+    emotion: "panic",
+    threat: 92,
+    location: "Kota",
+    brief: "Road accident reported. Multiple injured people detected.",
+    actions: [
+      "Dispatch ambulance immediately",
+      "Alert nearby police station",
+      "Track caller live location"
+    ],
+
+    transcript: [],
+
+    translations: {
+      english: {
+        1: "There has been an accident",
+        2: "Please tell your location"
+      },
+
+      hindi: {
+        1: "एक्सीडेंट हो गया है",
+        2: "लोकेशन बताइए"
+      }
+    }
+  }
+];
+
+/* ─── STATE ─── */
+let currentPage = 'dashboard';
+let prevPage = 'dashboard';
+let currentCallId = null;
+let activeLang = null;
+
+/* ─── INIT ─── */
+document.getElementById('dateEl').textContent = new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+buildCharts();
+buildCallList('dash-call-list', CALLS);
+buildCallList('active-call-list', CALLS.filter(c=>c.status==='active'));
+buildLogRows('all');
+buildSpark();
+
+/* ─── NAVIGATION ─── */
+function goPage(id, navEl) {
+  if (navEl) setActiveNav(id);
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+id).classList.add('active');
+  prevPage = currentPage;
+  currentPage = id;
+}
+function setActiveNav(id) {
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if (!id) return;
+  const map = {'dashboard':0,'active-calls':1,'call-logs':2};
+  if (map[id] !== undefined) document.querySelectorAll('.nav-item')[map[id]].classList.add('active');
+}
+function goBack() {
+  activeLang = null;
+  document.getElementById('btn-hindi').classList.remove('on');
+  document.getElementById('btn-en').classList.remove('on');
+  goPage(prevPage);
+  if (prevPage === 'dashboard') setActiveNav('dashboard');
+  else if (prevPage === 'active-calls') setActiveNav('active-calls');
+}
+
+/* ─── CALL LIST ─── */
+function buildCallList(containerId, calls) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  calls.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'call-row';
+    div.onclick = () => openCall(c.id);
+    div.innerHTML = `
+      <span class="accent" style="background:${c.priority==='high'?'#ef4444':c.priority==='medium'?'#f59e0b':'#2563eb'}"></span>
+      <div class="call-body">
+        <div class="call-num">${c.number}</div>
+        <div class="call-meta">
+          <span>${c.start}</span><span class="sep">·</span>
+          <span>${c.operator}</span><span class="sep">·</span>
+          <span>${c.lang.toUpperCase()}</span>
+        </div>
+      </div>
+      <div class="call-badges">
+        ${statusBadge(c.status)} ${priorityBadge(c.priority)} ${emotionBadge(c.emotion)}
+      </div>
+      <span class="arrow">›</span>`;
+    el.appendChild(div);
+  });
+}
+
+function statusBadge(s) { return s==='active'?`<span class="badge b-active">● Active</span>`:`<span class="badge b-closed">Closed</span>`; }
+function priorityBadge(p) { const m={'high':'b-high','medium':'b-medium','low':'b-low'}; return `<span class="badge ${m[p]||'b-low'}">${p}</span>`; }
+function emotionBadge(e) { const m={'panic':'b-panic','stress':'b-stress','neutral':'b-neutral','calm':'b-calm'}; return `<span class="badge ${m[e]||'b-neutral'}">${e}</span>`; }
+
+/* ─── CALL DETAIL ─── */
+function openCall(id) {
+  const c = CALLS.find(x=>x.id===id);
+  if (!c) return;
+  currentCallId = id;
+  activeLang = null;
+  document.getElementById('btn-hindi').classList.remove('on');
+  document.getElementById('btn-en').classList.remove('on');
+
+  document.getElementById('det-num').textContent = c.number;
+  document.getElementById('det-status-badge').innerHTML = statusBadge(c.status);
+  document.getElementById('tc-lang').textContent = c.lang.toUpperCase();
+  document.getElementById('tc-seg-count').textContent = c.transcript.length + ' segs';
+  document.getElementById('tc-live-dot').style.display = c.status==='active'?'block':'none';
+  document.getElementById('di-op').textContent = c.operator;
+  document.getElementById('di-lang').textContent = c.lang;
+  document.getElementById('di-start').textContent = c.start;
+  document.getElementById('di-loc').textContent = c.location;
+
+  const pColors = {high:'#dc2626',medium:'#d97706',low:'#1d4ed8'};
+  const eColors = {panic:'#9d174d',stress:'#b45309',neutral:'#6d28d9',calm:'#15803d'};
+  document.getElementById('ai-priority').textContent = c.priority.charAt(0).toUpperCase()+c.priority.slice(1);
+  document.getElementById('ai-priority').style.color = pColors[c.priority]||'#64748b';
+  document.getElementById('ai-emotion').textContent = c.emotion.charAt(0).toUpperCase()+c.emotion.slice(1);
+  document.getElementById('ai-emotion').style.color = eColors[c.emotion]||'#64748b';
+  document.getElementById('threat-fill').style.width = c.threat+'%';
+  document.getElementById('threat-pct').textContent = c.threat+'%';
+  document.getElementById('ai-brief').textContent = c.brief;
+
+  const actEl = document.getElementById('ai-actions');
+  actEl.innerHTML = c.actions.map(a=>`<div class="action-item" onclick="toast('✅ Action logged: ${a}','success')">${a}</div>`).join('');
+
+  const closeBtn = document.getElementById('closeCallBtn');
+  if (c.status === 'closed') { closeBtn.style.display='none'; } else { closeBtn.style.display=''; }
+
+  renderTranscript();
+  goPage('call-detail');
+}
+
+function renderTranscript() {
+  const c = CALLS.find(x=>x.id===currentCallId);
+  if (!c) return;
+  const body = document.getElementById('tc-body');
+  body.innerHTML = '';
+  c.transcript.forEach(seg => {
+    const cls = seg.speaker==='operator'?'op':seg.speaker==='caller'?'caller':'sys';
+    const translated = activeLang && c.translations[activeLang] && c.translations[activeLang][seg.id];
+    const showTranslation = translated && translated !== seg.text;
+    const div = document.createElement('div');
+    div.className = 'msg ' + cls;
+    div.innerHTML = `
+      <div class="msg-top">
+        <span class="msg-spk">${seg.speaker==='operator'?'Operator':seg.speaker==='caller'?'Caller':'System'}</span>
+        <span class="msg-time">${seg.time}</span>
+      </div>
+      <div class="bubble">
+        ${seg.text}
+        ${showTranslation?`<div class="translation">🌐 <span>${translated}</span></div>`:''}
+      </div>`;
+    body.appendChild(div);
+  });
+  body.scrollTop = body.scrollHeight;
+}
+
+/* ─── TRANSLATE ─── */
+function toggleTranslate(lang) {
+  const btnH = document.getElementById('btn-hindi');
+  const btnE = document.getElementById('btn-en');
+  if (activeLang === lang) {
+    activeLang = null;
+    btnH.classList.remove('on'); btnE.classList.remove('on');
+    toast('Translation turned off','info');
+  } else {
+    activeLang = lang;
+    btnH.classList.remove('on'); btnE.classList.remove('on');
+    (lang==='hindi'?btnH:btnE).classList.add('on');
+    toast(`Translating transcript to ${lang==='hindi'?'Hindi':'English'}...`,'info');
+  }
+  renderTranscript();
+}
+
+/* ─── CALL LOGS ─── */
+function buildLogRows(filter) {
+  const el = document.getElementById('log-rows');
+  const data = filter==='all'?CALLS:CALLS.filter(c=>filter==='active'?c.status==='active':filter==='closed'?c.status==='closed':c.priority===filter);
+  el.innerHTML = '';
+  data.forEach(c => {
+    const row = document.createElement('div');
+    row.className = 'log-row';
+    row.onclick = () => openCall(c.id);
+    row.innerHTML = `
+      <div class="log-cell mono">${c.number}</div>
+      <div class="log-cell dim mono" style="font-size:11.5px">${c.date}</div>
+      <div class="log-cell">${c.operator}</div>
+      <div class="log-cell">${c.lang}</div>
+      <div class="log-cell">${priorityBadge(c.priority)}</div>
+      <div class="log-cell">${statusBadge(c.status)}</div>
+      <div class="log-cell dim mono">${c.start}</div>`;
+    el.appendChild(row);
+  });
+}
+function filterLogs(f, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  buildLogRows(f);
+  toast(`Showing: ${f==='all'?'All calls':f+' calls'}`,'info');
+}
+
+/* ─── CHARTS ─── */
+function buildCharts() {
+  const pdata = [{n:'High',v:1,c:'#ef4444'},{n:'Medium',v:1,c:'#f59e0b'},{n:'Low',v:1,c:'#2563eb'}];
+  const edata = [{n:'Panic',v:1,c:'#ec4899'},{n:'Stress',v:1,c:'#f59e0b'},{n:'Neutral',v:1,c:'#6366f1'},{n:'Calm',v:0,c:'#16a34a'}];
+  [['prioChart',pdata],['emotChart',edata]].forEach(([id,data])=>{
+    const el = document.getElementById(id);
+    const max = Math.max(...data.map(d=>d.v),1);
+    data.forEach(d=>{
+      const col = document.createElement('div'); col.className='bar-col';
+      const bar = document.createElement('div'); bar.className='bar';
+      bar.style.cssText=`height:${Math.max((d.v/max)*100,8)}%;background:${d.c};opacity:.85`;
+      bar.title = `${d.n}: ${d.v} call(s)`;
+      bar.onclick = () => toast(`${d.n}: ${d.v} call(s)`,'info');
+      const lbl = document.createElement('div'); lbl.className='bar-lbl'; lbl.textContent=d.n;
+      col.appendChild(bar); col.appendChild(lbl); el.appendChild(col);
+    });
+  });
+}
+
+function buildSpark() {
+  const pts = [3,5,4,7,6,9,5,8,10,7,9,8];
+  const labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const W = 560, H = 120, padL = 30, padR = 10, padT = 10, padB = 30;
+  const max = Math.max(...pts);
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const xs = pts.map((_,i) => padL + (i / (pts.length-1)) * plotW);
+  const ys = pts.map(v => padT + plotH - ((v / max) * plotH));
+
+  // Smooth cubic bezier path
+  function curve(points) {
+    let d = `M ${points[0][0].toFixed(1)},${points[0][1].toFixed(1)}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const x1 = (points[i][0] + points[i+1][0]) / 2;
+      const y1 = points[i][1];
+      const x2 = (points[i][0] + points[i+1][0]) / 2;
+      const y2 = points[i+1][1];
+      d += ` C ${x1.toFixed(1)},${y1.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)} ${points[i+1][0].toFixed(1)},${points[i+1][1].toFixed(1)}`;
+    }
+    return d;
+  }
+  const coords = xs.map((x,i) => [x, ys[i]]);
+  const linePath = curve(coords);
+  const fillPath = linePath
+    + ` L ${xs[xs.length-1].toFixed(1)},${(padT+plotH).toFixed(1)}`
+    + ` L ${xs[0].toFixed(1)},${(padT+plotH).toFixed(1)} Z`;
+
+  // Grid lines (4 horizontal)
+  const gridLines = [0,0.33,0.66,1].map(t => {
+    const y = (padT + plotH - t * plotH).toFixed(1);
+    const val = Math.round(t * max);
+    return `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>
+            <text x="${(padL-6).toFixed(1)}" y="${y}" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#94a3b8" font-family="monospace">${val}</text>`;
+  }).join('');
+
+  // X-axis labels (every other)
+  const xLabels = xs.map((x,i) => i%2===0
+    ? `<text x="${x.toFixed(1)}" y="${(padT+plotH+16).toFixed(1)}" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="monospace">${labels[i]}</text>`
+    : '').join('');
+
+  // Dots
+  const dots = coords.map(([x,y]) =>
+    `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#fff" stroke="#2563eb" stroke-width="2"/>`)
+    .join('');
+
+  // Value labels on top
+  const valLabels = coords.map(([x,y],i) =>
+    `<text x="${x.toFixed(1)}" y="${(y-10).toFixed(1)}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2563eb" font-family="monospace">${pts[i]}</text>`)
+    .join('');
+
+  document.getElementById('sparkEl').innerHTML = `
+    <defs>
+      <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#2563eb" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#2563eb" stop-opacity="0.01"/>
+      </linearGradient>
+    </defs>
+    ${gridLines}
+    <path d="${fillPath}" fill="url(#sg)"/>
+    <path d="${linePath}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    ${xLabels}
+    ${dots}
+    ${valLabels}
+  `;
+}
+
+/* ─── ACTIONS ─── */
+function runAnalysis() {
+  const c = CALLS.find(x=>x.id===currentCallId);
+  document.getElementById('ai-status').textContent = 'ANALYZING...';
+  document.getElementById('ai-status').style.color = '#f59e0b';
+  toast('🤖 AI is analyzing the transcript...','info');
+  setTimeout(()=>{
+    document.getElementById('ai-status').textContent = 'READY';
+    document.getElementById('ai-status').style.color = 'var(--green)';
+    toast('✅ Analysis complete — threat level and actions updated','success');
+  }, 2000);
+}
+
+function confirmCloseCall() {
+  const c = CALLS.find(x=>x.id===currentCallId);
+  openModal(
+    '⚠️ Close Emergency Call',
+    `Are you sure you want to close the call with ${c.number}? This action will end the active session and move it to call logs.`,
+    () => {
+      c.status = 'closed';
+      document.getElementById('det-status-badge').innerHTML = statusBadge('closed');
+      document.getElementById('closeCallBtn').style.display = 'none';
+      document.getElementById('tc-live-dot').style.display = 'none';
+      buildCallList('dash-call-list', CALLS);
+      buildCallList('active-call-list', CALLS.filter(c=>c.status==='active'));
+      buildLogRows('all');
+      document.querySelectorAll('.nav-item')[1].querySelector('.nav-badge').textContent = CALLS.filter(c=>c.status==='active').length;
+      toast('✅ Call closed and moved to logs','success');
+    }
+  );
+}
+
+function startCall() {
+  toast('🚨 Emergency session started — connecting operator...','success');
+  setTimeout(()=>{ goPage('active-calls'); setActiveNav('active-calls'); },1200);
+}
+
+/* ─── MODAL ─── */
+function openModal(title, body, onConfirm) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').textContent = body;
+  document.getElementById('modalConfirm').onclick = () => { closeModal(); onConfirm(); };
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target===e.currentTarget) closeModal(); });
+
+/* ─── TOAST ─── */
+let toastTimer;
+function toast(msg, type='info') {
+  const el = document.getElementById('toastEl');
+  const icons = {success:'✅',warn:'⚠️',info:'ℹ️'};
+  document.getElementById('toastIcon').textContent = icons[type]||'ℹ️';
+  document.getElementById('toastMsg').textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 3200);
+}
+
+/* ─── AUTO UPDATE FROM PYTHON ─── */
+
+let lastTranscript = "";
+
+async function fetchDashboardData() {
+
+  try {
+
+    const response = await fetch("http://127.0.0.1:5000/data");
+
+    const data = await response.json();
+   if (
+    data.transcript === "" ||
+    data.response === ""
+) {
+    return;
+}
+    // STOP DUPLICATE MESSAGE
+    if(data.transcript === lastTranscript){
+      return;
+    }
+
+    lastTranscript = data.transcript;
+
+    CALLS[0].emotion = data.emotion;
+    CALLS[0].priority = data.priority;
+    CALLS[0].location = data.location;
+    CALLS[0].brief = data.incident;
+
+    const currentTime = new Date().toLocaleTimeString();
+
+    // Add caller message
+    CALLS[0].transcript.push({
+      id: Date.now(),
+      speaker: "caller",
+      text: data.transcript,
+      time: currentTime
+    });
+
+    // Add AI response
+    CALLS[0].transcript.push({
+      id: Date.now() + 1,
+      speaker: "operator",
+      text: data.response,
+      time: currentTime
+    });
+
+    buildCallList('dash-call-list', CALLS);
+    buildCallList('active-call-list', CALLS.filter(c=>c.status==='active'));
+
+    if(currentCallId === 1){
+      renderTranscript();
+    }
+
+  } catch(err) {
+    console.log("Server not running");
+  }
+}
+
+setInterval(fetchDashboardData, 2000);
+</script>
+</body>
+</html>
